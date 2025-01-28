@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibad Khan | Young Developer</title>
+    <title>Projects | Ibad Khan</title>
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.59/build/spline-viewer.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -24,15 +24,26 @@
         .logo { font-size: 66px; font-weight: bold; color: #ffffff; }
         .social-icons { position: fixed; top: 20px; right: 20px; z-index: 10; }
         .social-icon { color: #FF8C42; margin-left: 10px; font-size: 20px; }
-        .left-boxes { position: fixed; top: 50%; left: 20px; transform: translateY(-50%); z-index: 10; }
+        .right-boxes {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 10;
+            gap: 15px;
+            padding: 20px 0;
+        }
         .box { 
             background: rgba(0, 0, 0, 0.7); 
-            padding: 10px; 
-            margin-bottom: 15px; 
+            padding: 15px; 
             border-radius: 15px; 
             cursor: pointer; 
             width: 200px; 
-            height: 100px; 
+            min-height: 100px; 
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
@@ -45,14 +56,13 @@
             backdrop-filter: blur(5px); 
             position: relative; 
             overflow: hidden; 
-            
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
         .box h3 { margin: 0; font-size: 24px; color: #fff; font-family: 'Chillen', sans-serif; }
-        .box p { margin: 0; font-size: 16px; color: #ccc; font-family: 'Chillen', sans-serif; text-align: center; display: none; }
+        .box p { margin: 5px 0 0; font-size: 16px; color: #ccc; font-family: 'Chillen', sans-serif; text-align: center; display: none; }
         .box:hover { 
             transform: scale(1.05) translateY(-10px); 
             box-shadow: 0 0 20px rgba(255, 140, 66, 0.7), 0 0 30px rgba(255, 140, 66, 0.5); 
@@ -97,7 +107,6 @@
             border-top: 2px solid #FF8C42; 
             box-shadow: 0 -5px 10px rgba(255, 140, 66, 0.3); 
         }
-
         .footer-content { 
             display: flex; 
             justify-content: space-between; 
@@ -105,68 +114,48 @@
             max-width: 1200px; 
             margin: 0 auto; 
         }
-
         .footer-left, .footer-center, .footer-right { 
             flex: 1; 
             text-align: center; 
         }
-
-        .footer-left { 
-            text-align: left; 
-        }
-
-        .footer-right { 
-            text-align: right; 
-        }
-
+        .footer-left { text-align: left; }
+        .footer-right { text-align: right; }
         .accent { 
             color: #FF8C42; 
             text-shadow: 0 0 5px rgba(255, 140, 66, 0.7), 0 0 10px rgba(255, 140, 66, 0.5); 
             transition: all 0.3s ease; 
         }
-
         .accent:hover { 
             color: #fff; 
             text-shadow: 0 0 10px rgba(255, 140, 66, 0.9), 0 0 20px rgba(255, 140, 66, 0.7); 
         }
-
         .footer-center p { 
             margin: 0; 
             font-size: 18px; 
             color: #f8995e; 
             font-family: 'Chillen', sans-serif; 
         }
-
-        .footer-right a { 
-            text-decoration: none; 
-            color: inherit; 
-        }
+        .footer-right a { text-decoration: none; color: inherit; }
         .phone-title { display: none; font-size: 24px; font-weight: bold; text-align: center; margin-top: 20px; color: #FF8C42; }
         .page-transition { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.5s; }
         .page-transition.active { opacity: 1; }
         @media (max-width: 768px) {
             .phone-title { display: block; }
-            .left-boxes { 
-                display: flex; 
-                flex-direction: column; 
-                align-items: center; 
-                top: 50%; 
-                left: 50%; 
-                transform: translate(-50%, -50%); 
-                width: 100%; 
+            .right-boxes { 
+                right: 50%;
+                transform: translateX(50%);
+                align-items: center;
+                gap: 10px;
+                width: 90%;
             }
             .box { 
-                width: 60%; 
-                height: 80px; 
-                margin-bottom: 10px; 
+                width: 100%; 
+                min-height: 80px; 
                 padding: 10px; 
             }
             .box h3 { font-size: 20px; } 
             .box p { font-size: 14px; } 
-            spline-viewer { 
-                transform: scale(1.2); 
-                transform-origin: left center; 
-            }
+            spline-viewer { transform: scale(1.2); transform-origin: left center; }
         }
     </style>
 </head>
@@ -178,25 +167,25 @@
         <a href="https://linkedin.com/in/ibadmkhan" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/Imbad321" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
     </div>
-    <div class="left-boxes">
-        <div class="box" onmouseenter="expandBox(event)" onmouseleave="collapseBox(event)" onclick="handlePageTransition('projects.html')">
-            <h3>Projects</h3>
-            <p>What I've worked on and shows my capabilities and why I'm the best fit for your team</p>
+    <div class="right-boxes">
+        <div class="box" onmouseenter="expandBox(event)" onmouseleave="collapseBox(event)">
+            <h3>Project 1</h3>
+            <p>Advanced 3D modeling platform with AI integration</p>
         </div>
         <div class="box" onmouseenter="expandBox(event)" onmouseleave="collapseBox(event)">
-            <h3>About Me</h3>
-            <p>Why I do what I do, What inspires me to create</p>
+            <h3>Project 2</h3>
+            <p>Real-time collaborative code editor with live preview</p>
         </div>
         <div class="box" onmouseenter="expandBox(event)" onmouseleave="collapseBox(event)">
-            <h3>Skills</h3>
-            <p>What I can do and what I'm good at and what I'm actively learning</p>
+            <h3>Project 3</h3>
+            <p>Blockchain-based supply chain management system</p>
         </div>
         <div class="box" onmouseenter="expandBox(event)" onmouseleave="collapseBox(event)">
             <h3>Project 4</h3>
-            <p>Description of project 4</p>
+            <p>Machine learning-powered recommendation engine</p>
         </div>
     </div>
-    <spline-viewer id="spline-viewer" url="https://prod.spline.design/CyGxcGW5GGRepecH/scene.splinecode"></spline-viewer>
+    <spline-viewer id="spline-viewer" url="https://prod.spline.design/bPz92SjKOv7xyD8l/scene.splinecode"></spline-viewer>
     <footer>
         <div class="footer-content">
             <div class="footer-left">
@@ -217,11 +206,13 @@
             const preloader = document.querySelector('.preloader');
             const splineViewer = document.querySelector('spline-viewer');
             const fallbackTimeout = setTimeout(() => removePreloader(), 1800);
+            
             function removePreloader() {
                 preloader.classList.add('fade-out');
                 setTimeout(() => preloader.style.display = 'none', 500);
                 clearTimeout(fallbackTimeout);
             }
+            
             splineViewer.addEventListener('load', removePreloader);
             splineViewer.addEventListener('error', removePreloader);
         });
@@ -252,27 +243,20 @@
 
         function expandBox(event) {
             const box = event.currentTarget;
-            box.style.height = '150px';
             box.style.width = '350px';
+            box.style.minHeight = '150px';
             box.style.zIndex = '100';
             box.querySelector('p').style.display = 'block';
-            repositionBoxes();
+            box.style.transform = 'translateY(-10px) scale(1.05)';
         }
 
         function collapseBox(event) {
             const box = event.currentTarget;
-            box.style.height = '100px';
             box.style.width = '200px';
+            box.style.minHeight = '100px';
             box.style.zIndex = '1';
             box.querySelector('p').style.display = 'none';
-            repositionBoxes();
-        }
-
-        function repositionBoxes() {
-            const boxes = document.querySelectorAll('.box');
-            boxes.forEach((box, index) => {
-                box.style.transform = `translateY(${index * 120}px)`;
-            });
+            box.style.transform = 'translateY(0) scale(1)';
         }
     </script>
 </body>
