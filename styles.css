@@ -17,6 +17,7 @@ body {
     color: #fff; 
     overflow-x: hidden; 
     user-select: none; /* Make text unselectable */
+    cursor: none;
 }
 .preloader { 
     position: fixed; 
@@ -57,6 +58,12 @@ header {
     font-size: 66px; 
     font-weight: bold; 
     color: #ffffff; 
+    text-shadow: 0 0 10px rgba(255, 140, 66, 0.3);
+    animation: pulseLogo 3s ease-in-out infinite;
+}
+@keyframes pulseLogo {
+    0%, 100% { text-shadow: 0 0 10px rgba(255, 140, 66, 0.3); transform: scale(1); }
+    50% { text-shadow: 0 0 20px rgba(255, 140, 66, 0.7); transform: scale(1.05); }
 }
 .social-icons { 
     position: fixed; 
@@ -68,6 +75,18 @@ header {
     color: #FF8C42; 
     margin-left: 10px; 
     font-size: 20px; 
+    transition: all 0.4s ease;
+    animation: floatIcon 5s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * 0.8s);
+    position: relative;
+}
+.social-icon:nth-child(1) { --i: 1; }
+.social-icon:nth-child(2) { --i: 2; }
+.social-icon:nth-child(3) { --i: 3; }
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(5deg); }
+    75% { transform: translateY(3px) rotate(-5deg); }
 }
 .right-boxes {
     position: fixed;
@@ -249,7 +268,13 @@ footer {
 .accent { 
     color: #FF8C42; 
     text-shadow: 0 0 5px rgba(255, 140, 66, 0.7), 0 0 10px rgba(255, 140, 66, 0.5); 
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
+    animation: pulseAccent 4s ease-in-out infinite;
+}
+
+@keyframes pulseAccent {
+    0%, 100% { opacity: 0.9; text-shadow: 0 0 5px rgba(255, 140, 66, 0.5); }
+    50% { opacity: 1; text-shadow: 0 0 10px rgba(255, 140, 66, 0.8); }
 }
 
 .accent:hover { 
@@ -384,4 +409,474 @@ footer {
         width: 100%;
         text-align: center;
     }
+}
+
+/* Add these new styles after existing styles */
+
+.hero-container {
+    position: fixed;
+    top: 25%;
+    left: 10%;
+    transform: translateY(-50%);
+    z-index: 5;
+    max-width: 450px;
+    text-align: left;
+}
+
+.hero-text {
+    text-align: left;
+}
+
+.hero-title {
+    font-family: 'GWar', Arial, sans-serif;
+    font-size: 4.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 140, 66, 0.7);
+    animation: fadeIn 1.2s ease-out forwards, glowTitle 4s ease-in-out infinite 1.2s;
+    background: linear-gradient(90deg, #fff, #FF8C42, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
+
+@keyframes glowTitle {
+    0%, 100% { background-position: 0% center; text-shadow: 0 0 15px rgba(255, 140, 66, 0.5); }
+    50% { background-position: 100% center; text-shadow: 0 0 25px rgba(255, 140, 66, 0.8); }
+}
+
+.hero-subtitle {
+    font-family: 'Chillen', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #FF8C42;
+    text-shadow: 0 0 10px rgba(255, 140, 66, 0.5);
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+.hero-description {
+    font-family: 'Chillen', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 400px;
+    line-height: 1.4;
+    animation: fadeIn 1.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.cards-container {
+    position: fixed;
+    top: 55%;
+    left: 10%;
+    transform: translateY(0);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 15px;
+    z-index: 5;
+    width: 450px;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid #FF8C42;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 0 10px rgba(255, 140, 66, 0.3);
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.6s ease-out forwards, floatCard 6s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.2s), calc(var(--i) * 0.5s + 1s);
+    opacity: 0;
+}
+
+.card:nth-child(1) { --i: 1; }
+.card:nth-child(2) { --i: 2; }
+.card:nth-child(3) { --i: 3; }
+.card:nth-child(4) { --i: 4; }
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.card-icon {
+    color: #FF8C42;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    animation: pulseIcon 3s ease-in-out infinite;
+    position: relative;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: 'Chillen', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.card p {
+    margin: 6px 0 8px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Chillen', sans-serif;
+    text-align: center;
+    display: block;
+    line-height: 1.3;
+}
+
+.card-button {
+    font-family: 'Chillen', sans-serif;
+    color: #FF8C42;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.card-button i {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.03);
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 25px rgba(255, 140, 66, 0.75);
+    animation-play-state: paused;
+}
+
+.card:hover .card-button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover .card-button i {
+    transform: translateX(5px);
+}
+
+.card:hover::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255, 140, 66, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    animation: fadeIn 0.3s forwards;
+    mix-blend-mode: screen;
+}
+
+.card:hover::after {
+    opacity: 0.8;
+    transform: scale(1.03);
+}
+
+.card:hover .card-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: #FF8C42;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: explodeParticles 0.8s forwards;
+    opacity: 0;
+}
+
+@keyframes explodeParticles {
+    0% {
+        box-shadow: 
+            0 0 0 0 #FF8C42, 
+            0 0 0 0 #FF8C42, 
+            0 0 0 0 #FF8C42, 
+            0 0 0 0 #FF8C42, 
+            0 0 0 0 #FF8C42, 
+            0 0 0 0 #FF8C42;
+        opacity: 1;
+    }
+    100% {
+        box-shadow: 
+            20px -10px 0 -3px transparent, 
+            -20px -10px 0 -3px transparent, 
+            15px 15px 0 -3px transparent, 
+            -15px 15px 0 -3px transparent, 
+            0 -20px 0 -3px transparent, 
+            0 20px 0 -3px transparent;
+        opacity: 0;
+    }
+}
+
+.card:hover ~ .custom-cursor {
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 140, 66, 0.7);
+}
+
+.card:hover ~ .custom-cursor-trailer {
+    width: 60px;
+    height: 60px;
+    border-color: rgba(255, 140, 66, 0.6);
+}
+
+.card-magnetic {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.1s;
+}
+
+.card-magnetic .card-icon {
+    transform: translateZ(20px);
+    transition: transform 0.3s;
+}
+
+.card-magnetic h3 {
+    transform: translateZ(15px);
+    transition: transform 0.3s;
+}
+
+.card-magnetic p {
+    transform: translateZ(10px);
+    transition: transform 0.3s;
+}
+
+.card-magnetic .card-button {
+    transform: translateZ(25px);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+@keyframes floatCard {
+    0%, 100% { transform: translateY(0); box-shadow: 0 0 10px rgba(255, 140, 66, 0.3); }
+    50% { transform: translateY(-8px); box-shadow: 0 0 15px rgba(255, 140, 66, 0.5); }
+}
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); color: #ff9e5e; }
+}
+
+@media (max-width: 1200px) {
+    .cards-container {
+        grid-template-columns: repeat(4, 1fr);
+        width: 90%;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-container {
+        left: 8%;
+    }
+    
+    .hero-title {
+        font-size: 3.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .cards-container {
+        left: 8%;
+        width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        position: relative;
+        top: 120px;
+        left: 0;
+        padding: 0 20px;
+        margin: 0 auto;
+        width: 90%;
+        transform: none;
+        text-align: center;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        margin: 0 auto;
+    }
+    
+    .cards-container {
+        position: relative;
+        top: 150px;
+        left: 0;
+        transform: none;
+        grid-template-columns: repeat(2, 1fr);
+        width: 90%;
+        max-width: 450px;
+        margin: 0 auto 100px auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Add a subtle particle effect to the background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-image: radial-gradient(circle at 50% 50%, rgba(255, 140, 66, 0.03) 10%, transparent 10.5%),
+                      radial-gradient(circle at 80% 20%, rgba(255, 140, 66, 0.03) 5%, transparent 5.5%),
+                      radial-gradient(circle at 20% 80%, rgba(255, 140, 66, 0.03) 7%, transparent 7.5%);
+    background-size: 120px 120px, 170px 170px, 200px 200px;
+    animation: backgroundShift 30s linear infinite;
+}
+
+@keyframes backgroundShift {
+    0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+    100% { background-position: 120px 120px, 170px 170px, 200px 200px; }
+}
+
+/* Add glow border effect to cards */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.3), transparent 60%);
+    border-radius: 15px;
+    z-index: -1;
+    opacity: 0.5;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Add custom cursor */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 140, 66, 0.5);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+    box-shadow: 0 0 15px rgba(255, 140, 66, 0.7);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+}
+
+.custom-cursor-trailer {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 140, 66, 0.3);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9998;
+    transition: width 0.3s, height 0.3s, border-color 0.3s, transform 0.1s;
+}
+
+.card:hover ~ .custom-cursor {
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 140, 66, 0.7);
+}
+
+.card:hover ~ .custom-cursor-trailer {
+    width: 60px;
+    height: 60px;
+    border-color: rgba(255, 140, 66, 0.6);
+}
+
+/* Magnetic effect for cards */
+.card-magnetic {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.1s;
+}
+
+.card-magnetic .card-icon {
+    transform: translateZ(20px);
+    transition: transform 0.3s;
+}
+
+.card-magnetic h3 {
+    transform: translateZ(15px);
+    transition: transform 0.3s;
+}
+
+.card-magnetic p {
+    transform: translateZ(10px);
+    transition: transform 0.3s;
+}
+
+.card-magnetic .card-button {
+    transform: translateZ(25px);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Interactive element for spline viewer */
+.interactive-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.light-trail {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 140, 66, 0.7);
+    box-shadow: 0 0 15px rgba(255, 140, 66, 0.5);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    mix-blend-mode: screen;
 }
