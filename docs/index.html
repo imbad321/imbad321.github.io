@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibad Khan | Young Developer</title>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.59/build/spline-viewer.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="initializePageLoad()">
+    <div class="preloader"><div class="loader"></div></div>
+    <header><nav><span class="logo">IK</span></nav></header>
+    <div class="social-icons">
+        <a href="https://instagram.com/ibado__" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/in/ibadmkhan" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Imbad321" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+    </div>
+    
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1 class="hero-title">Ibad Khan</h1>
+            <h2 class="hero-subtitle">Software Engineer & Creative Developer</h2>
+            <p class="hero-description">Building digital experiences that blend creativity with technology</p>
+        </div>
+    </div>
+    
+    <div class="cards-container">
+        <div class="card" onmouseenter="expandBox(event)" onmouseleave="collapseBox(event)" onclick="handlePageTransition('projects.html')">
+            <div class="card-icon"><i class="fas fa-code-branch"></i></div>
+            <h3>Projects</h3>
+            <p>My portfolio of creative & technical work</p>
+            <div class="card-button">View <i class="fas fa-arrow-right"></i></div>
+        </div>
+        
+        <div class="card" onmouseenter="expandBox(event)" onmouseleave="collapseBox(event)" onclick="handlePageTransition('skills.html')">
+            <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Skills</h3>
+            <p>Technical abilities & expertise</p>
+            <div class="card-button">Explore <i class="fas fa-arrow-right"></i></div>
+        </div>
+        
+        <div class="card" onmouseenter="expandBox(event)" onmouseleave="collapseBox(event)">
+            <div class="card-icon"><i class="fas fa-user"></i></div>
+            <h3>About Me</h3>
+            <p>My journey & inspirations</p>
+            <div class="card-button">Read <i class="fas fa-arrow-right"></i></div>
+        </div>
+        
+        <div class="card" onmouseenter="expandBox(event)" onmouseleave="collapseBox(event)">
+            <div class="card-icon"><i class="fas fa-paper-plane"></i></div>
+            <h3>Contact</h3>
+            <p>Get in touch with me</p>
+            <div class="card-button">Connect <i class="fas fa-arrow-right"></i></div>
+        </div>
+    </div>
+    
+    <spline-viewer id="spline-viewer" url="https://prod.spline.design/CyGxcGW5GGRepecH/scene.splinecode"></spline-viewer>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <span class="accent">Software Engineer</span>
+            </div>
+            <div class="footer-center">
+                <p>Crafted by Ibad Khan © 2024</p>
+            </div>
+            <div class="footer-right">
+                <a href="mailto:chosen75312@gmail.com" class="accent">Email Me</a>
+            </div>
+        </div>
+    </footer>
+    <div class="phone-title">Ibad Khan</div>
+    <div class="page-transition"></div>
+    <script src="scripts.js"></script>
+</body>
+</html>
