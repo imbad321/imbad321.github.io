@@ -249,7 +249,7 @@ footer {
     max-width: 1200px; 
     margin: 0 auto; 
     padding: 0 15px;
-    font-size: clamp(0.8em, 2.5vw, 1em);
+    font-size: clamp(0.9em, 2.5vw, 1.1em);
 }
 
 .footer-left, .footer-center, .footer-right { 
@@ -409,6 +409,97 @@ footer {
         width: 100%;
         text-align: center;
     }
+    .hero-container {
+        position: relative;
+        top: 120px;
+        left: 0;
+        padding: 0 20px;
+        margin: 0 auto;
+        width: 90%;
+        transform: none;
+        text-align: center;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+        margin: 0 auto;
+    }
+    
+    .cards-container {
+        position: relative;
+        top: 150px;
+        left: 0;
+        transform: none;
+        grid-template-columns: repeat(2, 1fr);
+        width: 90%;
+        max-width: 450px;
+        margin: 0 auto 100px auto;
+        grid-gap: 12px; /* Smaller gap on mobile */
+    }
+    
+    .card p {
+        font-size: 0.95rem; /* Slightly smaller on mobile but still readable */
+        margin: 8px 0 10px;
+    }
+    
+    .card h3 {
+        font-size: 1.25rem; /* Slightly smaller on mobile but still readable */
+    }
+    
+    .card-button {
+        font-size: 0.95rem; /* Slightly smaller on mobile but still readable */
+    }
+    
+    /* Ensure footer is visible */
+    footer {
+        position: relative;
+        margin-top: 250px; /* Give space for the cards above */
+    }
+}
+
+@media (max-width: 576px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .card {
+        padding: 15px;
+        min-height: auto; /* Let it size based on content */
+    }
+    
+    .card p {
+        font-size: 0.9rem;
+        margin: 6px 0 8px;
+    }
+    
+    /* Adjust footer on very small screens */
+    .footer-content {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .footer-left, .footer-center, .footer-right {
+        text-align: center;
+        width: 100%;
+    }
 }
 
 /* Add these new styles after existing styles */
@@ -458,11 +549,13 @@ footer {
 
 .hero-description {
     font-family: 'Chillen', sans-serif;
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 1);
     max-width: 400px;
-    line-height: 1.4;
+    line-height: 1.5;
     animation: fadeIn 1.8s ease-out forwards;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
 @keyframes fadeIn {
@@ -484,7 +577,7 @@ footer {
 }
 
 .card {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.65);
     padding: 15px;
     border-radius: 15px;
     cursor: pointer;
@@ -524,32 +617,36 @@ footer {
 
 .card h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #fff;
     font-family: 'Chillen', sans-serif;
     transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .card p {
     margin: 6px 0 8px;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
     font-family: 'Chillen', sans-serif;
     text-align: center;
     display: block;
-    line-height: 1.3;
+    line-height: 1.5;
+    font-weight: 500;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 .card-button {
     font-family: 'Chillen', sans-serif;
     color: #FF8C42;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
     display: flex;
     align-items: center;
     opacity: 0;
     transform: translateY(10px);
     transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(255, 140, 66, 0.5);
 }
 
 .card-button i {
@@ -730,8 +827,8 @@ footer {
     }
     
     .hero-description {
-        font-size: 1rem;
-        margin: 0 auto;
+        font-size: 1.1rem;
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
     }
     
     .cards-container {
